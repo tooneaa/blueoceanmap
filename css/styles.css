@@ -1,9 +1,9 @@
 #map {
-    height: 400px;
+    height: 87vh;
   }
   
   .container {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0 0;
   }
   
