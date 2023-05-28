@@ -1,3 +1,5 @@
+
+
 function parseWayPointStringToArrayObject(string) {
 	var trimmedString = string.trim();
 	var stringWithoutCommas = trimmedString.replace(/,/g, "");
@@ -6,12 +8,11 @@ function parseWayPointStringToArrayObject(string) {
 	var numbers = numberStrings.map(function(string_num){
 		return parseFloat(string_num)
 	}) 
-	console.log(numbers)
 	return numbers
 
 }
 
-function splitMultipleLinesInTextArea(textarea) {
+function createMultipleWayPoints(textarea) {
 	var lines = textarea.split('\n');
 	console.log("Lines");
 	console.log(lines); // Output each line separately (you can modify this based on your requirement)
@@ -20,6 +21,9 @@ function splitMultipleLinesInTextArea(textarea) {
 		var waypoint_line = lines[i];
 		console.log("waypt_line");
 		console.log(waypoint_line); // Output each line separately (you can modify this based on your requirement)
+		var waypoint_line_to_obj = parseWayPointStringToArrayObject(waypoint_line)
+		console.log(waypoint_line_to_obj); // Output each line separately (you can modify this based on your requirement)
+		L.marker(waypoint_line_to_obj).addTo(map)
 	}
 
 }
@@ -37,13 +41,7 @@ form.addEventListener("submit", function(event) {
   var waypoints = formData.get("submitWayPoint");
 
   // Do something with the form data
-  console.log(splitMultipleLinesInTextArea(waypoints))
-
-  console.log(waypoints);
-  console.log(waypoints.trim());
-  console.log(typeof waypoints);
-
-  waypoint_obj = parseWayPointStringToArrayObject(waypoints)
+  createMultipleWayPoints(waypoints)
 
 //   console.log(typeof waypoint_obj);
   
@@ -57,7 +55,7 @@ form.addEventListener("submit", function(event) {
 L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 	subdomains: 'abcd',
-	maxZoom: 20
+	maxZoom: 5
 }).addTo(map);
 
 // Add a marker to the map
