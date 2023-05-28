@@ -38,12 +38,12 @@
       </div>
     </div>
   </nav>
-
-  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" 
-          data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Route / Waypoints</button>
-  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop">Enable backdrop (default)</button>
-  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Enable both scrolling & backdrop</button>
-
+  <div class="pb-3">
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" 
+            data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Route / Waypoints</button>
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop">Enable backdrop (default)</button>
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Enable both scrolling & backdrop</button>
+  </div>
   <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
@@ -53,13 +53,13 @@
       <p>Routes</p>
       <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Create Route</a>
       <div class="collapse multi-collapse" id="multiCollapseExample1">
-        <div>
+        <form>
           <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Add Waypoints</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
+            <label for="exampleFormControlTextarea1" class="form-label"></label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" placeholder="Add Waypoints">12.43, 0.00</textarea>
           </div>  
           <button type="submit" class="btn btn-primary">Submit</button>      
-        </div>
+        </form>
       </div>
       
       
