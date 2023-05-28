@@ -5,12 +5,24 @@ function parseWayPointStringToArrayObject(string) {
 
 	var numbers = numberStrings.map(function(string_num){
 		return parseFloat(string_num)
-	})
+	}) 
 	console.log(numbers)
 	return numbers
 
 }
 
+function splitMultipleLinesInTextArea(textarea) {
+	var lines = textarea.split('\n');
+	console.log("Lines");
+	console.log(lines); // Output each line separately (you can modify this based on your requirement)
+
+	for (let i = 0; i < lines.length; i++) {
+		var waypoint_line = lines[i];
+		console.log("waypt_line");
+		console.log(waypoint_line); // Output each line separately (you can modify this based on your requirement)
+	}
+
+}
 
 // Initialize the map
 var map = L.map('map').setView([27.57, 34.27], 13);
@@ -25,15 +37,19 @@ form.addEventListener("submit", function(event) {
   var waypoints = formData.get("submitWayPoint");
 
   // Do something with the form data
+  console.log(splitMultipleLinesInTextArea(waypoints))
+
+  console.log(waypoints);
   console.log(waypoints.trim());
   console.log(typeof waypoints);
-  console.log(typeof [12.43, 0.00]);
+
   waypoint_obj = parseWayPointStringToArrayObject(waypoints)
-  console.log(typeof waypoint_obj);
+
+//   console.log(typeof waypoint_obj);
   
 
   // You can perform further operations with the data here or send it to a server using AJAX, etc.
-  L.marker(waypoint_obj).addTo(map)
+//   L.marker(waypoint_obj).addTo(map)
 });
 
 
