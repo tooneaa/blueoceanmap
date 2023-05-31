@@ -2,9 +2,11 @@
 
 function parseWayPointStringToArrayObject(string) {
 	var trimmedString = string.trim();
-	var stringWithoutCommas = trimmedString.replace(/,/g, "");
-	var numberStrings = stringWithoutCommas.split(" ");
+    var trimmedString = trimmedString.replace(/ /g, "")
 
+	var stringWithoutCommas = trimmedString.replace(/,/g, " ");
+
+	var numberStrings = stringWithoutCommas.split(" ");
 	var numbers = numberStrings.map(function(string_num){
 		return parseFloat(string_num)
 	}) 
@@ -16,12 +18,13 @@ function createMultipleWayPoints(textarea) {
 	var lines = textarea.split('\n');
 	console.log("Lines");
 	console.log(lines); // Output each line separately (you can modify this based on your requirement)
-
+    console.log(lines.length)
 	for (let i = 0; i < lines.length; i++) {
 		var waypoint_line = lines[i];
 		console.log("waypt_line");
 		console.log(waypoint_line); // Output each line separately (you can modify this based on your requirement)
 		var waypoint_line_to_obj = parseWayPointStringToArrayObject(waypoint_line)
+		console.log("waypoint_line_to_obj"); // Output each line separately (you can modify this based on your requirement)
 		console.log(waypoint_line_to_obj); // Output each line separately (you can modify this based on your requirement)
 		L.marker(waypoint_line_to_obj).addTo(map)
 	}
