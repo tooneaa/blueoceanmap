@@ -1,6 +1,10 @@
 #map {
     height: 85.5vh;
   }
+
+#offcanvasWithBackdrop {
+  width:50%;
+}
   
   .container {
     max-width: 100%;

@@ -59,7 +59,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r
 }).addTo(map);
 
 // Add a marker to the map
-var marker = L.marker([27.57, 34.27]).addTo(map);
+// var marker = L.marker([27.57, 34.27]).addTo(map);
 
 // Add a popup to the marker
 // marker.bindPopup("<b>Hello!</b><br>This is a Leaflet.js marker.").openPopup();
