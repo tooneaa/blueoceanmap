@@ -29,10 +29,16 @@ function convertMultipleWayPointStringsToArray(textarea) {
 	for (let i = 0; i < lines.length; i++) {
 		var waypoint_line = lines[i];
 		var waypoint_line_to_obj = parseWayPointStringToArrayObject(waypoint_line)
-		store_waypoints.push(waypoint_line_to_obj)
+		console.log(waypoint_line_to_obj)
+		console.log(isNaN(waypoint_line_to_obj[0]))
+		if (!isNaN(waypoint_line_to_obj[0])) {
+			store_waypoints.push(waypoint_line_to_obj)
+		}
+		
 		// console.log(waypoint_line_to_obj)
 		// L.marker(waypoint_line_to_obj).addTo(map)
 	}
+	console.log(store_waypoints.length)
 	return store_waypoints
 }
 
@@ -54,8 +60,7 @@ function plotMultipleWayPointsFromArray(wayPointsArray) {
 }
 
 function drawPolyLineForWaypointRoute(wayPointsArray) {
-
-	for (let i=0; i < wayPointsArray.length; i++){
+	for (let i=0; i < wayPointsArray.length-1; i++){
 		var start_point = wayPointsArray[i]
 		var end_point = wayPointsArray[i+1]
 		var draw_line = L.polyline([start_point, end_point]).addTo(map)
