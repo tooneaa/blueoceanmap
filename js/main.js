@@ -29,9 +29,11 @@ function convertMultipleWayPointStringsToArray(textarea) {
 	for (let i = 0; i < lines.length; i++) {
 		var waypoint_line = lines[i];
 		var waypoint_line_to_obj = parseWayPointStringToArrayObject(waypoint_line)
-		store_waypoints.push(waypoint_line_to_obj)
-		// console.log(waypoint_line_to_obj)
-		// L.marker(waypoint_line_to_obj).addTo(map)
+
+		if (!isNaN(waypoint_line_to_obj[0])) {
+			store_waypoints.push(waypoint_line_to_obj)
+		}
+
 	}
 	return store_waypoints
 }
@@ -55,7 +57,7 @@ function plotMultipleWayPointsFromArray(wayPointsArray) {
 
 function drawPolyLineForWaypointRoute(wayPointsArray) {
 
-	for (let i=0; i < wayPointsArray.length; i++){
+	for (let i=0; i < wayPointsArray.length -1; i++){
 		var start_point = wayPointsArray[i]
 		var end_point = wayPointsArray[i+1] 
 		var draw_line = L.polyline([start_point, end_point]).addTo(map)
@@ -86,14 +88,14 @@ form.addEventListener("submit", function(event) {
 	var waypoints = formData.get("submitWayPoint");
 	var waypointsArray = convertMultipleWayPointStringsToArray(waypoints)
 
-	 ""
+	
 
 	// plotWayPoints
 	submitRouteWayPointButton(waypointsArray)
 
 	// Clear TextArea
 	var wayPoint_textArea = document.getElementById("exampleFormControlTextarea1")
-	wayPoint_textArea.value =
+	wayPoint_textArea.value = ""
   // You can perform further operations with the data here or send it to a server using AJAX, etc.
 //   L.marker(waypoint_obj).addTo(map)
 });
