@@ -29,8 +29,7 @@ function convertMultipleWayPointStringsToArray(textarea) {
 	for (let i = 0; i < lines.length; i++) {
 		var waypoint_line = lines[i];
 		var waypoint_line_to_obj = parseWayPointStringToArrayObject(waypoint_line)
-		console.log(waypoint_line_to_obj)
-		console.log(isNaN(waypoint_line_to_obj[0]))
+
 		if (!isNaN(waypoint_line_to_obj[0])) {
 			store_waypoints.push(waypoint_line_to_obj)
 		}
