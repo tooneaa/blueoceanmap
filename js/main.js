@@ -86,14 +86,13 @@ form.addEventListener("submit", function(event) {
 	var waypoints = formData.get("submitWayPoint");
 	var waypointsArray = convertMultipleWayPointStringsToArray(waypoints)
 
-	 ""
 
 	// plotWayPoints
 	submitRouteWayPointButton(waypointsArray)
 
 	// Clear TextArea
 	var wayPoint_textArea = document.getElementById("exampleFormControlTextarea1")
-	wayPoint_textArea.value =
+	wayPoint_textArea.value = ""
   // You can perform further operations with the data here or send it to a server using AJAX, etc.
 //   L.marker(waypoint_obj).addTo(map)
 });
