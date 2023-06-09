@@ -78,12 +78,13 @@ function addNewRouteDiv(container) {
 
 	var newButtonAccordion = document.createElement("button")
 	newButtonAccordion.classList.add("accordion-button" ,"collapsed")
-	var newButtonText = document.createTextNode("Route 1")
+	var routeTitle = document.getElementById("FormRouteTitle").value
+	var newButtonText = document.createTextNode(routeTitle)
 	
 	newButtonAccordion.appendChild(newButtonText)
 	newAccordionItem.append(newButtonAccordion)
 	newAccordion.append(newAccordionItem)
-
+    
 
 	var existingDiv = document.getElementById('submitroute');
     container.insertBefore(newAccordion, existingDiv);
