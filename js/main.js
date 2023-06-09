@@ -1,4 +1,43 @@
 
+// Main Function when pressed Route Submit Button
+var form = document.getElementById("submitWayPoint");
+function submitRouteWayPointButton(wayPointsArray) {
+    // received a array of waypoints as input
+
+	// add waypoint to map
+	plotMultipleWayPointsFromArray(wayPointsArray)
+	// draw lines between waypoint
+	drawPolyLineForWaypointRoute(wayPointsArray)
+	// add routes to route list
+	// addNewRouteElement()
+	var container = document.getElementById('routes');
+	console.log(container)
+	addNewRouteDiv(container)
+
+	// Clear TextArea
+	var wayPoint_textArea = document.getElementById("exampleFormControlTextarea1")
+	wayPoint_textArea.value = ""
+
+	var wayPoint_title = document.getElementById("FormRouteTitle")
+	wayPoint_title.value = ""
+}
+
+form.addEventListener("submit", function(event) {
+	event.preventDefault();
+	var formData = new FormData(form);
+
+	// Get the form values into Array
+	var waypoints = formData.get("submitWayPoint");
+	var waypointsArray = convertMultipleWayPointStringsToArray(waypoints)
+
+	submitRouteWayPointButton(waypointsArray)
+
+
+  // You can perform further operations with the data here or send it to a server using AJAX, etc.
+//   L.marker(waypoint_obj).addTo(map)
+});
+
+
 
 var store_waypoints = Array()
 var routeMarkerList = Array()
@@ -35,7 +74,6 @@ function convertMultipleWayPointStringsToArray(textarea) {
 	}
 	return store_waypoints
 }
-
 
 function plotMultipleWayPointsFromArray(wayPointsArray) {
 	// take an array of waypoints and plot it as markers.
@@ -78,6 +116,7 @@ function addNewRouteDiv(container) {
 
 	var newButtonAccordion = document.createElement("button")
 	newButtonAccordion.classList.add("accordion-button" ,"collapsed")
+
 	var routeTitle = document.getElementById("FormRouteTitle").value
 	var newButtonText = document.createTextNode(routeTitle)
 	
@@ -110,53 +149,16 @@ function addNewRouteDiv(container) {
             </div>
         </div>
 </div> */
-function addNewRouteElement(container) {
-	// create a new div element
-	const newDiv = document.createElement("div");
-	// and give it some content
-	const newContent = document.createTextNode("Hi there and greetings!");
-	// add the text node to the newly created div
-    
-}
-
-
-// Main Function when pressed Submit 
-var form = document.getElementById("submitWayPoint");
-function submitRouteWayPointButton(wayPointsArray) {
-    // received a array of waypoints as input
-
-	// add waypoint to map
-	plotMultipleWayPointsFromArray(wayPointsArray)
-	// draw lines between waypoint
-	drawPolyLineForWaypointRoute(wayPointsArray)
-	// add routes to route list
-	// addNewRouteElement()
-	var container = document.getElementById('routes');
-	console.log(container)
-	addNewRouteDiv(container)
-}
 
 
 
 
 
-form.addEventListener("submit", function(event) {
-	event.preventDefault();
-	var formData = new FormData(form);
 
-	// Get the form values into Array
-	var waypoints = formData.get("submitWayPoint");
-	var waypointsArray = convertMultipleWayPointStringsToArray(waypoints)
 
-	// plotWayPoints
-	submitRouteWayPointButton(waypointsArray)
 
-	// Clear TextArea
-	var wayPoint_textArea = document.getElementById("exampleFormControlTextarea1")
-	wayPoint_textArea.value = ""
-  // You can perform further operations with the data here or send it to a server using AJAX, etc.
-//   L.marker(waypoint_obj).addTo(map)
-});
+
+
 
 
 
